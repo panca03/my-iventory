@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# 📦 My-Inventory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project **My-Inventory** adalah aplikasi manajemen produk sederhana yang saya kembangkan sebagai bagian dari pembelajaran di **MySkill**.  
+Aplikasi ini dibangun menggunakan **Laravel** sebagai backend (API) dan **React.js** sebagai frontend.  
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Fitur Utama
+- ✅ Tambah produk baru  
+- ✅ Lihat daftar produk  
+- ✅ Edit/update produk  
+- ✅ Hapus produk  
+- ✅ Validasi form (frontend + backend)  
+- ✅ REST API dengan Laravel  
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
+- **Frontend:** React.js (Create React App), Axios, Bootstrap, SweetAlert2  
+- **Backend:** Laravel 10 (REST API, Eloquent ORM, Validation)  
+- **Database:** MySQL  
+- **Tools:** Git, GitHub, Postman  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📂 Struktur Project
+my-inventory/
+├── backend/ # Laravel API
+│ ├── app/
+│ ├── routes/api.php
+│ └── ...
+└── frontend/ # React.js App
+├── src/
+│ ├── components/
+│ └── pages/
+└── package.json
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Instalasi & Menjalankan Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone Repository
+```bash
+git clone https://github.com/username/my-inventory.git
+cd my-inventory 
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Backend (Laravel)
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
 
-### `npm run eject`
+Buat database di MySQL lalu atur koneksi di file .env
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Jalankan migrasi: php artisan migrate
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Jalankan server Laravel: php artisan serve
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Frontend (React.js)
+```bash
+cd frontend
+npm install
+npm start
+```
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🔗 API Endpoint Utama
+| Method | Endpoint                     | Deskripsi         |
+| ------ | ---------------------------- | ----------------- |
+| GET    | `/api/products`              | List semua produk |
+| GET    | `/api/products/{id}`         | Detail produk     |
+| POST   | `/api/products`              | Tambah produk     |
+| POST   | `/api/products/update/{id}`  | Update produk     |
+| DELETE | `/api/products/{id}`         | Hapus produk      |
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
