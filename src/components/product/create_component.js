@@ -10,31 +10,25 @@ import { useNavigate } from 'react-router-dom';
 export default function CreateProduct() {
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState();
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [validationError, setValidationError] = useState({});
-
-  const changeHandler = (event) => {
-    setImage(event.target.files[0]);
-  };
 
   const createProduct = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("image", image);
+    formData.append('name', name);
+    formData.append('description', description);
 
     await axios
-      .post(`http://localhost:8000/api/products`, formData)
+      .post(`http://localhost:8000/api/products/save`, formData)
       .then(({ data }) => {
         Swal.fire({
-          icon: "success",
+          icon: 'success',
           text: data.message,
         });
-        navigate("/");
+        navigate('/');
       })
       .catch(({ response }) => {
         if (response.status === 422) {
@@ -42,7 +36,7 @@ export default function CreateProduct() {
         } else {
           Swal.fire({
             text: response.data.message,
-            icon: "error",
+            icon: 'error',
           });
         }
       });
@@ -78,11 +72,11 @@ export default function CreateProduct() {
                   <Row>
                     <Col>
                       <Form.Group controlId="Name">
-                        <Form.Label>Title</Form.Label>
+                        <Form.Label>Name</Form.Label>
                         <Form.Control
                           type="text"
-                          value={title}
-                          onChange={(event) => setTitle(event.target.value)}
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
                         />
                       </Form.Group>
                     </Col>
@@ -104,15 +98,6 @@ export default function CreateProduct() {
                     </Col>
                   </Row>
 
-                  <Row>
-                    <Col>
-                      <Form.Group controlId="Image" className="mb-3">
-                        <Form.Label>Image</Form.Label>
-                        <Form.Control type="file" onChange={changeHandler} />
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
                   <Button
                     variant="primary"
                     className="mt-2"
@@ -130,4 +115,3 @@ export default function CreateProduct() {
     </div>
   );
 }
-
